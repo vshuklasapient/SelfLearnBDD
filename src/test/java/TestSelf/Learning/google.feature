@@ -1,3 +1,4 @@
+@complete
 Feature: Testing the basic features of google
 
 	Scenario: To login into google home page

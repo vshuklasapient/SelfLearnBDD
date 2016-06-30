@@ -6,6 +6,7 @@ import org.junit.Assert;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -19,7 +20,9 @@ public class StepDefs {
 	@Before
 	public void setUp() {
 	System.setProperty("webdriver.chrome.driver", "D:\\Selenium JARS\\chromedriver.exe");
-	driver = new ChromeDriver();
+	DesiredCapabilities capability = DesiredCapabilities.chrome();
+	capability.setJavascriptEnabled(true);
+	driver = new ChromeDriver(capability);
 	driver.manage().window().maximize();
 	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}

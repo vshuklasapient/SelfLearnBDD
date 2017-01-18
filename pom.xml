@@ -9,6 +9,15 @@
 
   <name>Learning</name>
   <url>http://maven.apache.org</url>
+  <build>
+  	<testResources>
+  	<testResource>
+  		<directory>src/test/resources</directory>
+	</testResource>
+  </testResources>
+  </build>
+  
+  
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -37,5 +46,17 @@
       	<version>4.12</version>
       	<scope>test</scope>
     </dependency>
+    <dependency>
+    	<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-compiler-plugin</artifactId>
+  		<version>3.5.1</version>
+  		<type>maven-plugin</type>
+	</dependency>
+	<dependency>
+  		<groupId>org.apache.maven.plugins</groupId>
+  		<artifactId>maven-surefire-plugin</artifactId>
+  		<version>2.19.1</version>
+  		<type>maven-plugin</type>
+	</dependency>
   </dependencies>
 </project>

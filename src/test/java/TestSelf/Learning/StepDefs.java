@@ -1,5 +1,6 @@
 package TestSelf.Learning;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 import org.junit.Assert;
@@ -19,7 +20,7 @@ public class StepDefs {
 	
 	@Before
 	public void setUp() {
-	System.setProperty("webdriver.chrome.driver", "D:\\Selenium JARS\\chromedriver.exe");
+	System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir")+File.separator+"chromedriver_win32"+File.separator+"chromedriver.exe");
 	DesiredCapabilities capability = DesiredCapabilities.chrome();
 	capability.setJavascriptEnabled(true);
 	driver = new ChromeDriver(capability);

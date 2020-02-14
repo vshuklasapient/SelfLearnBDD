@@ -8,6 +8,8 @@ import org.junit.Assert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -32,6 +34,8 @@ public class StepDefs {
 	public void i_redirect_to_google_home_page()
 		throws Exception{
 		driver.get("http://www.google.com");
+		WebDriverWait wait = new WebDriverWait(driver,15);
+		wait.until(ExpectedConditions.titleIs("Google"));
 	}
 	
 	@Then("^I validate Title$")

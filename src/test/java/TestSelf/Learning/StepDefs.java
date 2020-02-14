@@ -1,15 +1,21 @@
 package TestSelf.Learning;
 
 import java.io.File;
+import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
 
-import org.junit.Assert;
 
+import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.google.common.base.Function;
 
 import cucumber.api.java.After;
 import cucumber.api.java.Before;
@@ -36,6 +42,17 @@ public class StepDefs {
 		driver.get("http://www.google.com");
 		WebDriverWait wait = new WebDriverWait(driver,15);
 		wait.until(ExpectedConditions.titleIs("Google"));
+		FluentWait<WebDriver> waitFluent = new FluentWait<WebDriver>(driver)
+				.withTimeout(30, TimeUnit.SECONDS)
+				.pollingEvery(5, TimeUnit.SECONDS)
+				.ignoring(NoSuchElementException.class);
+		WebElement searchbox = waitFluent.until(new Function <WebDriver,WebElement>(){
+			public WebElement apply(WebDriver driver) {
+				WebElement ele = driver.findElement(By.name("q"));
+				return ele;
+			}
+		});
+		searchbox.sendKeys("Sapient");
 	}
 	
 	@Then("^I validate Title$")

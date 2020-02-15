@@ -32,6 +32,7 @@ public class StepDefs {
 	DesiredCapabilities capability = DesiredCapabilities.chrome();
 	capability.setJavascriptEnabled(true);
 	driver = new ChromeDriver(capability);
+	driver.manage().deleteAllCookies();
 	driver.manage().window().maximize();
 	driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 	}
